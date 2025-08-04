@@ -7,18 +7,18 @@ class CircularLine{
             for (int val:t){
                 total +=val;
             }
-            int res= -1;
+            int res = -1;
+            int l = 0;
+            int cur = 0;
             int n = int(t.size());
-            for (int i=0;i<n;i++){
-                int cur =0;
-                for (int j =i+1;j<n;j++){
-                    cur += t[j];
-                    int val = std::min(cur,total-cur);
-                    if (res==-1){
-                        res =val;
-                    }
-                    res = std::max(res,val);
+            for (int r=0; r<n; r++){
+                cur += t[r];
+                while (cur>total*1.0/2){
+                    res = std::max(res,total-cur);
+                    cur -= t[l];
+                    l+=1;
                 }
+                res = std::max(res,cur);
             }
             return res;
         }
