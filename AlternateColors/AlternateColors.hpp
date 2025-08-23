@@ -3,7 +3,6 @@
 class AlternateColors{
     public:
         std::string getColor(long r, long g, long b, long k){
-            k -=1;
             std::string colors[] = {"RED","GREEN","BLUE"};
             long minCor = std::min(r, std::min(g, b));
             if (minCor*3<k){
@@ -50,11 +49,11 @@ class AlternateColors{
                     return colors[larger];
                 }
                 else{
-                    return colors[lastTwo[k%2]];
+                    return colors[lastTwo[(k-1)%2]];
                 }
             }
             else{
-                return colors[k%3];
+                return colors[(k-1)%3];
             }
         }
 };
