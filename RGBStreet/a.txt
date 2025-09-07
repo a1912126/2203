@@ -1,0 +1,10 @@
+RGBStreet
+Initial thoughts:
+The problem was to minimize the cost of painting a row of houses, where each house can be painted red, green, or blue, and no two adjacent houses may share the same color. This immediately suggested a dynamic programming (DP) approach because each decision (color for house i) depends only on the minimal costs of the previous house with the other two colors. The challenge was formulating the transitions cleanly and keeping track of three costs at each step.
+Reflection:
+I implemented a rolling-DP solution, storing the minimal cost to end at each color (redEnd, greenEnd, blueEnd). For each house, I parsed its three painting costs, then updated:
+redEnd = min(previous green, previous blue) + redVal
+greenEnd = min(previous red, previous blue) + greenVal
+blueEnd = min(previous red, previous green) + blueVal
+This guarantees that no two adjacent houses use the same color, since each state excludes the matching previous color. At the end, the minimal cost among the three endpoints is the answer.
+The solution runs in O(n) time (n ≤ 20), with only constant extra memory. It handled all sample cases: alternating optimal colors, all-equal costs, and larger examples with non-trivial transitions. Using a single pass DP with rolling variables kept the code clean and efficient.
