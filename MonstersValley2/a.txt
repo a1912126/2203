@@ -1,0 +1,8 @@
+Initial thoughts:
+The task was to minimize the gold coins needed to pass through monsters. Each monster has a dread value, and Manao must bribe if its dread is greater than the total dread of his current party. Bribing increases both total dread and the total cost. Since the number of monsters is small (≤20), a brute-force recursion or DP seemed natural. My first idea was recursive backtracking: at each monster, either bribe it (gain dread, spend cost) or, if possible, skip it. The difficulty was pruning choices efficiently because the dread values can be very large, but recursion with careful branching would still work given the constraints.
+Reflection:
+I implemented a recursive function with parameters: current index, current total dread, and coins spent so far.
+If the current dread is greater than the monster’s, I explored the “skip” branch.
+Regardless, I always explored the “bribe” branch (add dread[i], add cost[i]).
+The recursion tracked the minimum cost across all valid paths. Because the recursion depth is ≤20 and each monster offers at most two choices, the search space (≈2^20 = ~1M states) is manageable.
+The algorithm passed all sample cases, including edge cases like being forced to bribe the very first monster, and large dread values (where only the sum matters, not the magnitude). The solution is exponential in theory, but constraints make it efficient enough.
