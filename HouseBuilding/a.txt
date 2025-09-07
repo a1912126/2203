@@ -1,0 +1,10 @@
+HouseBuilding
+Initial thoughts:
+The task was to level a rectangular area so that the difference between the lowest and highest height is at most 1. The cost is the total effort to raise/lower individual cells by 1. My first thought was that the final leveled area must consist of only two consecutive integer heights (say h and h+1). This means the problem reduces to choosing the best target interval [h, h+1] and computing the minimum effort to shift all cells into it.
+Reflection:
+I first counted the frequency of each digit (0–9) across the grid. Then for each possible baseline height i (0 to 8), I considered the interval [i, i+1]. For each height j in the area, the cost to move it into [i, i+1] is simply the minimum of |i-j| and |(i+1)-j|. I multiplied this by the frequency of j and summed across all heights.
+Finally, I kept the minimum result over all possible i.
+This method is efficient because:
+Heights are only digits 0–9, so checking all intervals is just 9 cases.
+Frequency counting avoids re-scanning the grid repeatedly.
+Time complexity is effectively O(10×10) after preprocessing, trivial for the constraints (≤ 2500 cells).

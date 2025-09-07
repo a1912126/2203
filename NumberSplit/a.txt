@@ -1,0 +1,11 @@
+NumberSplit
+Initial thoughts:
+The task was to repeatedly split a number into at least two parts, multiply the parts, and continue until a single-digit is reached, maximizing the sequence length. At first, I thought about recursion with memoization, since each number can lead to multiple successors and we want the longest path. But recursion alone could revisit many states. Using BFS/queue with state tracking seemed cleaner: explore all possible splits and store the minimal steps when reaching a number to avoid re-processing. The challenge was carefully handling splits (including multi-digit groups and leading zeros) and avoiding infinite loops.
+Reflection:
+I used a queue (BFS) to process numbers, combined with a map (numMap) to record the shortest steps when reaching a number. For each number, I generated all possible splits by recursion (createNums). If the split produced a new number that wasn’t seen at a lower step, I pushed it into the queue. This ensured that each number was expanded only when it could extend the sequence further.
+When a single-digit was reached, I updated the global result with the max sequence length so far.
+The recursion to split numbers considered two choices at each digit:
+Cut here → multiply accumulated product with the previous number part.
+Continue → build a larger digit chunk.
+This allowed all valid partitions to be explored.
+The solution efficiently handled constraints (start ≤ 100,000), since numbers shrink quickly under multiplication, and memoization pruned repeated states.

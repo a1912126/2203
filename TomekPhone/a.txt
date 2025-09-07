@@ -1,0 +1,6 @@
+TomekPhone
+Initial thoughts:
+The task was to minimize the total number of keystrokes needed to type text given letter frequencies and key capacities. Each key position corresponds to a keystroke cost (1st letter → 1 keystroke, 2nd letter → 2 keystrokes, etc.). My initial intuition was that the most frequent letters should always be placed in the cheapest slots, making this a greedy assignment problem. The main challenge was representing all available "slots" (positions across keys) and matching them optimally to frequencies.
+Reflection:
+I sorted the frequencies in descending order so that the most frequent letters are considered first. Then I generated a list of all available slots by expanding each key into positions (1, 2, …, size), meaning if a key has size 3, it contributes slots of costs 1, 2, and 3. After sorting the slots in ascending order, I matched each frequency to the corresponding slot: the most frequent letter gets the lowest-cost slot, the next frequency the next slot, and so on.
+If the number of slots is less than the number of letters, it’s impossible to assign all letters, so I returned -1. Otherwise, I computed the total cost as the sum of frequency[i] * slot[i].
