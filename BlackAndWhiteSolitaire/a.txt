@@ -1,0 +1,7 @@
+BlackAndWhiteSolitaire
+Initial thoughts:
+The problem was to flip the minimum number of cards so that a sequence of black (B) and white (W) cards alternates. Since there are only two valid alternating sequences — starting with B or starting with W — a simple approach is to compare the input against both patterns and count mismatches. The smaller count is the answer.
+Reflection:
+I iterated through the cards, maintaining the previous card color. Whenever the current card matched the previous one, it meant a flip was needed, so I incremented a counter and virtually flipped the card to continue the alternating sequence. After processing the whole string, I returned the minimum between count and n - count to account for the other possible starting color.
+The algorithm runs in O(n), scanning the string once. This method is simple, efficient, and handles all edge cases, including sequences that are already alternating or fully uniform. Testing confirmed correctness on examples with short sequences, long sequences, and mixed patterns.
+This approach reinforced the utility of greedy single-pass algorithms for problems involving alternation or pattern matching.

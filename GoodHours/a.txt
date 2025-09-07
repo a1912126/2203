@@ -1,0 +1,6 @@
+GoodHours
+Initial thoughts:
+The problem was to count “good” times between two given moments, where a time is good if its four digits can be split into two groups with equal products. There are three valid splits: H | HMM, HH | MM, and HHM | M. My initial thought was that brute-force iteration over all hours and minutes between the start and end times is feasible, since there are at most 24 × 60 = 1,440 minutes in a day. The challenge was correctly handling time intervals that span midnight.
+Reflection:
+I parsed beforeTime and afterTime into hours and minutes. If the end time is earlier than the start time, I treated it as spanning midnight and iterated through the remainder of the first day and the start of the next day separately. For each minute, I extracted its four digits and checked the three possible splits to see if the products matched.
+The implementation uses nested loops over hours and minutes and simple arithmetic to extract digits and compute products. Each valid minute increments the count.
