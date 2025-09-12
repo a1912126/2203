@@ -1,0 +1,8 @@
+ColorfulRabbits
+Initial thoughts:
+The problem asks for the minimum possible number of rabbits in town given their replies about others with the same color. If a rabbit answers x, it means there are exactly x + 1 rabbits of that color group (including itself). Multiple rabbits with the same reply can belong to the same group, but if there are more rabbits than fit in one group, we must start another group of the same size.
+Reflection:
+In the implementation, I:
+Counted how many times each reply value occurs.
+For each reply, grouped rabbits in sets of size reply + 1. The formula ((count - 1) / (reply + 1) + 1) * (reply + 1) ensures enough full groups to cover all rabbits with that reply.
+This method guarantees the minimum population consistent with the answers, and it works efficiently within the problem’s small constraints.
