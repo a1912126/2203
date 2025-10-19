@@ -1,0 +1,6 @@
+PrefixFreeSets
+Initial thoughts:
+The problem required finding the largest subset of words such that no word is a prefix of another. My initial idea was to use a Trie (prefix tree), which naturally represents prefix relationships between words. Each node in the Trie keeps track of how many words pass through it. If a word’s final node (its endpoint) has a frequency of 1, that means it’s not a prefix of any other word, nor does any other word share it as a prefix — making it safe to include in the prefix-free set.
+Reflection:
+I implemented a Trie (Tree class) with an insert function that builds paths for each word and increments the frequency of nodes along the way. The find function checks if a word’s final node has a frequency of 1, meaning it’s not extended by any other word. In the main function, I inserted all unique words into the Trie and then counted how many have unique paths (non-shared prefixes).
+This approach efficiently identifies valid words in a prefix-free subset and handles duplicate inputs gracefully using an unordered set. It balances clarity with correctness and leverages Trie properties for a clean and intuitive solution.

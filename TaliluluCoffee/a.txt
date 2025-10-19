@@ -1,0 +1,6 @@
+TaliluluCoffee
+Initial thoughts:
+The problem asked for the maximum total tip the coffee shop owner can earn, where each customer’s tip decreases by one per minute of waiting. My first observation was that to maximize tips, customers with higher potential tips should be served earlier since their value drops faster over time. Thus, sorting the tip values and serving from the largest to smallest seemed to be an effective greedy strategy.
+Reflection:
+I sorted the array of tips in ascending order, then used two pointers: one starting from the lowest (l) and one from the highest (r). At each minute, I served the customer with the larger effective remaining tip (tips[r] - time) while skipping any customers whose tips had already dropped to zero or below. After serving each customer, I increased the time counter.
+This approach efficiently balances maximizing early high-value tips and avoiding wasted serves. The algorithm runs in O(n log n) due to sorting and handles edge cases like zero tips or all equal values correctly.
