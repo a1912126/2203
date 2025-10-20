@@ -10,17 +10,17 @@ class TaliluluCoffee{
            int res= 0 ;
            int time = 0;
            while (l<=r){
-            if (tips[r]>n-time-1){
+            while (l<=r && tips[l]-time<=0){
+                    l +=1;
+                }
+            if (l > r){
+                break;
+            }
+            if (tips[r]-time>r-l){
                 res += std::max(0,tips[r]-time);
                 r -=1;
             }
             else{
-                while (l<n && tips[l]-time<=0){
-                    l +=1;
-                }
-                if (l == n){
-                    break;
-                }
                 res += std::max(0,tips[l]-time);
                 l +=1;
             }
