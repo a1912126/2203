@@ -1,0 +1,5 @@
+Thimbles
+Initial thoughts:
+The problem simulates a simple swapping game with three thimbles. The ball starts under thimble 1, and each swap of the form “X-Y” exchanges the positions of X and Y. My initial idea was to track the ball’s position directly — if a swap includes the thimble currently holding the ball, move it to the other thimble in the swap.
+Reflection:
+I initialized the ball’s position at 1 and iterated through each swap. For each, I parsed the two thimbles and updated the ball’s position if it was involved in that swap. The logic is straightforward and runs in O(n), making it efficient and easy to verify against examples.
